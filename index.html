@@ -2175,30 +2175,30 @@
 
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var mobileMenuBtn = document.getElementById("mobile-menu-btn");
-        var mobileMenu = document.getElementById("mobile-menu");
-        var mainLinks = document.querySelectorAll("#main-mobile-links .main-link");
+document.addEventListener("DOMContentLoaded", function () {
+    var mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    var mobileMenu = document.getElementById("mobile-menu");
+    var mainLinks = document.querySelectorAll("#main-mobile-links .main-link");
 
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener("click", function () {
-                mobileMenu.classList.toggle("hidden");
-                var expanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
-                mobileMenuBtn.setAttribute("aria-expanded", String(!expanded));
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener("click", function () {
+            mobileMenu.classList.toggle("hidden");
+            var expanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+            mobileMenuBtn.setAttribute("aria-expanded", String(!expanded));
+        });
+        mainLinks.forEach(function(link) {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                var pageId = link.getAttribute("data-nav");
+                mobileMenu.classList.add("hidden");
+                mobileMenuBtn.setAttribute("aria-expanded", "false");
+                if (typeof showPage === 'function' && pageId) {
+                    showPage(pageId);
+                }
             });
-            mainLinks.forEach(function(link) {
-                link.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    var pageId = link.getAttribute("data-nav");
-                    mobileMenu.classList.add("hidden");
-                    mobileMenuBtn.setAttribute("aria-expanded", "false");
-                    if (typeof showPage === 'function') {
-                        showPage(pageId);
-                    }
-                });
-            });
-        }
-    });
+        });
+    }
+});
     </script>
 
 
