@@ -1745,38 +1745,7 @@
         </div>
     </footer>
 
-    <script>
-        // ...existing code...
-        // Remove duplicate mobile menu JS and refactor for accessibility and reliability
-        document.addEventListener("DOMContentLoaded", function () {
-            // ...existing code...
-            // Mobile menu accessibility and toggle
-            const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-            const mobileMenu = document.getElementById("mobile-menu");
-            const links = mobileMenu.querySelectorAll("a");
 
-            // Add ARIA attributes for accessibility
-            mobileMenuBtn.setAttribute("aria-controls", "mobile-menu");
-            mobileMenuBtn.setAttribute("aria-expanded", "false");
-            mobileMenuBtn.setAttribute("aria-label", "فتح القائمة الرئيسية");
-            mobileMenu.setAttribute("role", "menu");
-
-            // Toggle menu on hamburger click
-            mobileMenuBtn.addEventListener("click", function () {
-                const isOpen = !mobileMenu.classList.contains("hidden");
-                mobileMenu.classList.toggle("hidden");
-                mobileMenuBtn.setAttribute("aria-expanded", String(!isOpen));
-            });
-
-            // Hide menu on link click
-            links.forEach(link => {
-                link.addEventListener("click", function () {
-                    mobileMenu.classList.add("hidden");
-                    mobileMenuBtn.setAttribute("aria-expanded", "false");
-                });
-            });
-            // ...existing code...
-        });
 
         // Logo click function to reveal owner login
         function logoClick() {
